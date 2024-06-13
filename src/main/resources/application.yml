@@ -1,0 +1,47 @@
+spring:
+  kafka:
+    bootstrap-servers: server
+    properties:
+      producer:
+        security.protocol: SASL_SSL
+        sasl.mechanism: PLAIN
+        sasl.jaas.config:
+      consumer:
+        security.protocol: SASL_SSL
+        sasl.mechanism: PLAIN
+        sasl.jaas.config:
+    consumer:
+      group-id: worker-group
+      auto-offset-reset: latest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      max-poll-records: 500
+      enable-auto-commit: false
+      max-poll-interval-ms: 300000
+      poll-timeout: 3000
+      concurrency: 3
+      ssl-endpoint-algorithm: https
+      schema-registry-url: url
+      value-converter-schema: url
+      schema-register-basic-auth-user-info: auth
+      basic-auth-credentials: USER_INFO
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      retries: 3
+      batch-size: 16384
+      linger-ms: 1
+      buffer-memory: 33554432
+      compression-type: lz4
+      acks: all
+      ssl-endpoint-algorithm: https
+      schema-registry-url: url
+      value-converter-schema: url
+      schema-register-basic-auth-user-info: auth
+      basic-auth-credentials: USER_INFO
+
+topics:
+  sender:
+    closed-day-route-created: closed-day-route-created
+
+
