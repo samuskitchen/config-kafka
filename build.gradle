@@ -5,7 +5,7 @@ plugins {
     id "jacoco"
 }
 
-group = 'com.apexdigital'
+group = 'com.project'
 version = '0.0.1-SNAPSHOT'
 
 java {
